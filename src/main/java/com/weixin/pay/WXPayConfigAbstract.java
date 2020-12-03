@@ -1,10 +1,5 @@
 package com.weixin.pay;
 
-import com.weixin.pay.constants.WXPayConstants;
-
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 
 /**
@@ -45,7 +40,7 @@ public class WXPayConfigAbstract extends WXPayConfig {
     }
 
     @Override
-    WXPayDomain getWXPayDomain() {
+    public WXPayDomain getWXPayDomain() {
         return null;
     }
 
@@ -65,5 +60,10 @@ public class WXPayConfigAbstract extends WXPayConfig {
     @Override
     public int getReportBatchSize() {
         return 2;
+    }
+
+    @Override
+    public boolean getUseSandbox() {
+        return false;
     }
 }

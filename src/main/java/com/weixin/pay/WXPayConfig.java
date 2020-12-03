@@ -101,4 +101,13 @@ public abstract class WXPayConfig {
         return 10;
     }
 
+
+    /**
+     * 是否使用沙箱环境
+     * @return
+     */
+    public boolean getUseSandbox() {
+        return false;
+    }
+
 }
