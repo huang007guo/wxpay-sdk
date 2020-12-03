@@ -21,7 +21,7 @@ public class WXPay {
     private WXPayRequest wxPayRequest;
 
     public WXPay(final WXPayConfig config) throws Exception {
-        this(config, null, true, false);
+        this(config, null, true, config.getUseSandbox());
         // this(config, null, true, true);
     }
 
