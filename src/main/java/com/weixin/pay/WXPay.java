@@ -48,11 +48,12 @@ public class WXPay {
         this.notifyUrl = notifyUrl;
         this.autoReport = autoReport;
         this.useSandbox = useSandbox;
-        if (useSandbox) {
-            this.signType = SignType.MD5; // 沙箱环境
-        } else {
-            this.signType = SignType.MD5; // 此处原来不是MD5！！！
-        }
+//        if (useSandbox) {
+//            this.signType = SignType.MD5; // 沙箱环境
+//        } else {
+//            this.signType = SignType.MD5; // 此处原来不是MD5！！！
+//        }
+        this.signType = SignType.MD5; // 此处原来不是MD5！！！
         this.wxPayRequest = new WXPayRequest(config);
     }
 
@@ -350,9 +351,9 @@ public class WXPay {
                                 } else {
                                     WXPayUtil.getLogger().info("microPayWithPos: try micropay again");
                                     if (remainingTimeMs > 5 * 1000) {
-                                        Thread.sleep(5 * 1000);
+                                        Thread.sleep(5 * 1000L);
                                     } else {
-                                        Thread.sleep(1 * 1000);
+                                        Thread.sleep(1 * 1000L);
                                     }
                                     continue;
                                 }
@@ -1039,7 +1040,7 @@ public class WXPay {
         data.put("refund_fee", String.valueOf(new BigDecimal(refund_fee).multiply(new BigDecimal(100)).setScale(2, BigDecimal.ROUND_HALF_UP).intValue()));
         // 退款原因	否	String(80)	商品已售完	若商户传入，会在下发给用户的退款消息中体现退款原因
         data.put("refund_desc", refund_desc);
-        // 货币种类	否	String(8)	CNY	货币类型，符合ISO 4217标准的三位字母代码，默认人民币：CNY，其他值列表详见货币类型
+        // 货币种类	否	String(8)	CNY	货币类型，符合ISO 4217标准的三位字母代码，默认人民币：CNY，其他值列表详见货币类型
         data.put("refund_fee_type", WXPayConstants.FEE_TYPE_CNY);
         // 退款结果通知url	否	String(256)	https://weixin.qq.com/notify/	异步接收微信支付退款结果通知的回调地址，通知URL必须为外网可访问的url，不允许带参数,如果参数中传了notify_url，则商户平台上配置的回调地址将不会生效。
         data.put("notify_url", notify_url);
